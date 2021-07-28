@@ -26,14 +26,14 @@ module.exports = class Funcionarios {
             })
         })
     }
-    addFuncionario(infos){
+    addFuncionario(funcionario){
         return new Promise ((resolve, reject) => {
 
             const query = `INSERT INTO FUNCIONARIOS (NOME, EMAIL, TELEFONE, CARGO, CPF)
              VALUES (?,?,?,?,?)`
-            const novoFunc = [infos[0],infos[1],infos[2],infos[3],infos[4]]
-
-            this.bd.run(query, novoFunc, error => {
+            // const novoFunc = [infos[0],infos[1],infos[2],infos[3],infos[4]]
+            let obj = Object.values(funcionario)
+            this.bd.run(query, obj, error => {
                 if(error) reject(`Erro ao adicionar novo Funcionário. ${error}`)
                 else resolve(`Novo funcionário adicionando com sucesso ao BD.`)
             })

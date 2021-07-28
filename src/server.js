@@ -3,7 +3,7 @@ const app = express()
 
 const port = 3535
 
-const bd = require("../src/data/sqlite3-db")
+const bd = require("./data/sqlite3-db")
 
 const funcionarioController = require("./controller/funcionario-controller")
 

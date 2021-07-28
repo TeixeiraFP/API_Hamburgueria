@@ -1,8 +1,9 @@
 const FuncionarioDao = require("../dao/funcionario-dao")
+const Funcionario = require("../model/funcionario-model")
 
 module.exports = (app, bd) => {
 
-    const DaoFunc = new FuncionarioDao(bd)
+    let DaoFunc = new FuncionarioDao(bd)
 
     app.get("/funcionarios", async (req, res) => {
         try{
@@ -26,10 +27,14 @@ module.exports = (app, bd) => {
 
     app.post("/funcionarios/novoFuncionario", async (req, res) => {
         try{
-            const body = req.body
-            const parametros = [body.NOME, body.EMAIL, body.TELEFONE, body.CARGO, body.CPF]
+            // const body = req.body
+            // const parametros = [body.NOME, body.EMAIL, body.TELEFONE, body.CARGO, body.CPF]
 
-            const resposta = await DaoFunc.addFuncionario(parametros)
+            const {NOME, EMAIL, TELEFONE, CARGO, CPF} = req.body
+
+            let funcionario = new Funcionario (NOME, EMAIL, TELEFONE, CARGO, CPF)
+           
+            let resposta = await DaoFunc.addFuncionario(funcionario)
             res.send(resposta)
         }catch(error){
             res.send(error)
