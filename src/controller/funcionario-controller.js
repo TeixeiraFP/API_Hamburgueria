@@ -5,6 +5,7 @@ module.exports = (app, bd) => {
 
     let DaoFunc = new FuncionarioDao(bd)
 
+    //rota que busca todos funcionários
     app.get("/funcionarios", async (req, res) => {
         try{
             const resposta = await DaoFunc.verFuncionarios()
@@ -20,6 +21,7 @@ module.exports = (app, bd) => {
         }
     })
 
+    //rota que busca o funcionário a partir do ID
     app.get("/funcionarios/:ID", async (req, res) => {
         try{
             const id = req.params.ID 
@@ -36,10 +38,9 @@ module.exports = (app, bd) => {
         }
     })
 
+    //rota que cria o cadastro de um novo funcionario
     app.post("/funcionarios/novoFuncionario", async (req, res) => {
         try{
-            // const body = req.body
-            // const parametros = [body.NOME, body.EMAIL, body.TELEFONE, body.CARGO, body.CPF]
 
             const {NOME, EMAIL, TELEFONE, CARGO, CPF} = req.body
 
@@ -56,6 +57,7 @@ module.exports = (app, bd) => {
         }
     })
 
+    //rota que deleta um funcionário pelo ID
     app.delete("/funcionarios/deleteFuncionario/:ID", async (req, res) => {
         try{
             const id = req.params.ID 
@@ -71,6 +73,7 @@ module.exports = (app, bd) => {
         }
     })
 
+    //rota que atualiza o funcionário pelo ID
     app.put("/funcionarios/atualizaFuncionario/:ID", async (req, res) => {
         try{
             const id = req.params.ID
