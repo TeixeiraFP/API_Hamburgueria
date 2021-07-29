@@ -8,9 +8,15 @@ module.exports = (app, bd) => {
     app.get("/funcionarios", async (req, res) => {
         try{
             const resposta = await DaoFunc.verFuncionarios()
-            res.send(resposta)
+            res.json({
+                result: resposta,
+                countBd: resposta.length,
+                error: false
+            })
         }catch(error){
-            res.send(error)
+            res.json({
+                error:error.message
+            })
         }
     })
 
@@ -19,9 +25,14 @@ module.exports = (app, bd) => {
             const id = req.params.ID 
 
             const resposta = await DaoFunc.verUnicoFuncionario(id)
-            res.send(resposta)
+            res.json({
+                result: resposta,
+                error: false
+            })
         }catch(error){
-            res.send(error)
+            res.json({
+                error:error.message
+            })
         }
     })
 
@@ -35,9 +46,13 @@ module.exports = (app, bd) => {
             let funcionario = new Funcionario (NOME, EMAIL, TELEFONE, CARGO, CPF)
            
             let resposta = await DaoFunc.addFuncionario(funcionario)
-            res.send(resposta)
+            res.json({
+                result: resposta
+            })
         }catch(error){
-            res.send(error)
+            res.json({
+                error:error.message
+            })
         }
     })
 
@@ -46,9 +61,13 @@ module.exports = (app, bd) => {
             const id = req.params.ID 
             const resposta = await DaoFunc.deleteFuncionario(id)
 
-            res.send(resposta)
+            res.json({
+                result: resposta
+            })
         }catch(error){
-            res.send(error)
+            res.json({
+                error:error.message
+            })
         }
     })
 
@@ -60,10 +79,14 @@ module.exports = (app, bd) => {
 
             const resposta = await DaoFunc.atualizarFuncionario(parametros, id)
 
-            res.send(resposta)
+            res.json({
+                result: resposta
+            })
             
-        }catch(error){
-            res.send(error)
+        }catch(e){
+            res.json({
+                error:e.message
+            })
         }
     })
 
