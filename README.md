@@ -22,7 +22,7 @@
 4. Por fim  Com todas dependências instaladas e o BD criado, execute o comando: <br>
 ` npm run dev `
 
-5. As rota para acessar a entidade Funcionario são:
+5. As rota para acessar a entidade Funcionario são: <br>
   GET: `"/funcionarios"` <br>
   GET: `"/funcionarios/:ID"` <br><br>
   POST: `"/funcionarios/novoFuncionario"`  <br><br>
