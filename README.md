@@ -1,7 +1,7 @@
 
-## Projeto API Rest criada em NODEJS. 
+## Projeto Hamburgueria Express!  
 
-### Tecnologias Utilizadas
+### Tenha instalado:
 1. Git
 2. Node.js
    
@@ -37,3 +37,9 @@ Agora você pode utilizar o projeto e testas as rotas, **GET**, **PUT**, **POST*
 ### Sobre
 Projeto foi feito utilizando **Node.js**, **Express**, **SQLite3**, como uma biblioteca para simular o banco de dados. Na organização do código utilizamos como padrão **Models** e **Controllers**.
 Com intuito de não ferir o princícipio da responsabilidade única, foi utilizado o design patters DAO (Data Acess Object), separando a lógica de negócios da lógica de persitência de dados o arquivo e facilitando muito na hora de fazer a manutenção do código.
+   
+### Tecnologias Utilizadas
+   1. Node.js
+   2. Express
+   3. Sqlite3
+   
